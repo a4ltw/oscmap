@@ -31,6 +31,20 @@
 
 隨著專案發展新增其他工具或資料來源時，會持續更新這份清單。
 
+## 參考資料來源（Reference）
+
+開工前有先搜尋過是否已有類似專案，目前還沒看到「用地圖整合台灣開源社群活動」的網站。以下是調查過程中找到的相關社群名單、目錄與活動平台，之後會作為蒐集社群活動資料的參考來源，在此一併聲明出處：
+
+| 名稱 | 說明 |
+|---|---|
+| [開源社群推廣目錄 - SITCON (HackMD)](https://hackmd.io/@SITCON/floss-community-list) | 文字形式的開源社群目錄 |
+| [臺灣自由/開源軟硬體社群列表 - MindMeister](https://www.mindmeister.com/zh/303031964/open-source-community-map-in-taiwan) | 以心智圖整理的台灣開源社群列表 |
+| [社群夥伴 - 開放文化基金會 (OCF)](https://ocf.tw/p/community) | OCF 支持的開源社群清單 |
+| [COSCUP 官網 - 社群](https://coscup.org/2026/community/) | 台灣開源人年會，社群串連頁面 |
+| [COSCUP - Wikipedia](https://en.wikipedia.org/wiki/COSCUP) | COSCUP 背景介紹 |
+| [OpenStreetMap Taiwan 開放街圖台灣](https://osm.tw/) | OSM 在台灣的社群與資料 |
+| [OpenStreetMap US - Events](https://openstreetmap.us/events/) | 國外 OSM 社群的活動整理方式，可作為參考範例 |
+
 ## 貢獻者
 
 詳見 [CONTRIBUTORS.md](./CONTRIBUTORS.md)。
