@@ -20,6 +20,46 @@
         "tags": ["conference", "open-source"],
         "source": "https://coscup.org/2026/community/"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.6152, 25.0439]
+      },
+      "properties": {
+        "id": "sitcon-2026",
+        "name": "SITCON 2026：Jam the Chaos",
+        "community": ["SITCON"],
+        "description": "學生計算機年會，由學生自主發起的年度技術研討會。",
+        "start": "2026-03-28T08:30:00+08:00",
+        "end": "2026-03-28T18:00:00+08:00",
+        "location_name": "中央研究院人文社會科學館",
+        "address": "115 台北市南港區研究院路二段 128 號",
+        "url": "https://sitcon.org/2026/",
+        "tags": ["conference", "student", "open-source"],
+        "source": "https://sitcon.kktix.cc/events/sitcon2026"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [120.2985, 22.7238]
+      },
+      "properties": {
+        "id": "mopcon-2026",
+        "name": "MOPCON 2026",
+        "community": ["MOPCON"],
+        "description": "南台灣最大科技社群年會，由無給職志工籌辦，涵蓋軟體、AI 等技術主題。",
+        "start": "2026-10-31T09:00:00+08:00",
+        "end": "2026-10-31T18:00:00+08:00",
+        "location_name": "高雄科技大學楠梓校區活動中心",
+        "address": "811 高雄市楠梓區海專路 142 號",
+        "url": "https://mopcon.org/2026/",
+        "tags": ["conference", "open-source"],
+        "source": "https://mopcon.org/2026/agenda.html"
+      }
     }
   ]
 }
