@@ -14,7 +14,7 @@
 
 - **地圖前端**：[Leaflet.js](https://leafletjs.com/)
 - **地圖底圖資料**：[OpenStreetMap](https://www.openstreetmap.org/)
-- **活動資料**：先以靜態 [GeoJSON](https://geojson.org/) 檔案管理，之後視需求再擴充
+- **活動資料**：先以靜態 [GeoJSON](https://geojson.org/) 檔案管理，格式詳見 [`data/SCHEMA.md`](./data/SCHEMA.md)，資料放在 [`data/events.geojson`](./data/events.geojson)，之後視需求再擴充
 - **部署**：GitHub Pages（純靜態、免開源授權疑慮）
 
 ## 使用的工具與資源（Attribution）
