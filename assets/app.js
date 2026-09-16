@@ -18,6 +18,21 @@ function formatDateTime(iso) {
   return new Date(iso).toLocaleString('zh-TW', { dateStyle: 'medium', timeStyle: 'short' });
 }
 
+function formatDateShort(iso) {
+  if (!iso) return '';
+  return new Date(iso).toLocaleDateString('zh-TW', { month: 'short', day: 'numeric' });
+}
+
+function monthKey(iso) {
+  const d = new Date(iso);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+}
+
+function monthLabel(key) {
+  const [year, month] = key.split('-');
+  return `${year} 年 ${Number(month)} 月`;
+}
+
 function popupContent(properties) {
   const p = properties;
   const community = (p.community || []).join('、');
@@ -36,14 +51,73 @@ function popupContent(properties) {
   `;
 }
 
+function groupByMonth(features) {
+  const groups = new Map();
+  const sorted = [...features].sort(
+    (a, b) => new Date(a.properties.start) - new Date(b.properties.start)
+  );
+  for (const feature of sorted) {
+    const key = monthKey(feature.properties.start);
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(feature);
+  }
+  return groups;
+}
+
+function renderTimeline(features, markersById) {
+  const container = document.getElementById('timeline-list');
+  container.innerHTML = '';
+
+  const groups = groupByMonth(features);
+
+  for (const [key, monthFeatures] of groups) {
+    const section = document.createElement('div');
+    section.className = 'timeline-month';
+
+    const heading = document.createElement('h2');
+    heading.textContent = monthLabel(key);
+    section.appendChild(heading);
+
+    for (const feature of monthFeatures) {
+      const p = feature.properties;
+      const item = document.createElement('button');
+      item.type = 'button';
+      item.className = 'timeline-item';
+      item.innerHTML = `
+        <span class="date">${escapeHtml(formatDateShort(p.start))}</span>
+        <span class="name">${escapeHtml(p.name)}</span>
+      `;
+      item.addEventListener('click', () => {
+        const marker = markersById.get(p.id);
+        if (!marker) return;
+        map.flyTo(marker.getLatLng(), 13);
+        marker.openPopup();
+
+        document
+          .querySelectorAll('.timeline-item.active')
+          .forEach((el) => el.classList.remove('active'));
+        item.classList.add('active');
+      });
+      section.appendChild(item);
+    }
+
+    container.appendChild(section);
+  }
+}
+
 fetch('data/events.geojson')
   .then((res) => res.json())
   .then((geojson) => {
+    const markersById = new Map();
+
     L.geoJSON(geojson, {
       onEachFeature: (feature, layer) => {
         layer.bindPopup(popupContent(feature.properties));
+        markersById.set(feature.properties.id, layer);
       }
     }).addTo(map);
+
+    renderTimeline(geojson.features, markersById);
   })
   .catch((err) => {
     console.error('讀取活動資料失敗', err);
